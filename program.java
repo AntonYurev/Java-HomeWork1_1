@@ -41,3 +41,37 @@ class Solution {
     return k;
     }
 }
+
+
+// Задача 3
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int copiInd = m + n - 1;
+        if (m == 0){
+            for (int i = 0; i < nums1.length; i++){
+                nums1[i] = nums2[i];
+            }
+            n = 0;
+        }
+        for (int i = m; i > 0; i--){
+            for (int j = n; j > 0; j--){
+                if (nums2[n-1] > nums1[m-1]){
+                nums1[copiInd] = nums2[n-1];
+                n -= 1;
+                copiInd -= 1;
+                }
+            
+                else{
+                    nums1[copiInd] = nums1[m-1];
+                    nums1[m-1] = nums2[n-1]; 
+                    copiInd -= 1;
+                    m -= 1;
+                    n -= 1;
+                }
+            }
+        }
+        
+        
+    }
+}
